@@ -23,5 +23,13 @@ public class Player {
     public String toString() {
         return "Player [health=" + health + ", mana=" + mana + ", strength=" + strength + "]";
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 }
 
