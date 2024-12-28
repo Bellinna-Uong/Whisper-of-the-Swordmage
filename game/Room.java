@@ -1,39 +1,23 @@
 package game;
+
+import game.objects.GameObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Room {
     private String name;
     private String description;
-    private Map<String, Room> connections;
+    private Map<String, Room> connections; // Connections to other rooms
+    private Map<String, GameObject> directionalObjects; // Objects or entities in specific directions
 
-    /**
-     * Constructor
-     * @param name
-     * @param description
-     */
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
         this.connections = new HashMap<>();
+        this.directionalObjects = new HashMap<>();
     }
 
-    //Add a connection to another room
-    public void addConnection(String direction, Room room){
-        connections.put(direction, room);
-    }
-
-    // Get the room in the specified direction
-    public Room getRoomInDirection(String direction){
-        return connections.get(direction);
-    }
-
-    //Check if a direction is valid
-    public boolean isDirectionValid(String direction){
-        return connections.containsKey(direction);
-    }
-
-    //Getters
     public String getName() {
         return name;
     }
@@ -42,7 +26,39 @@ public class Room {
         return description;
     }
 
-    public String getAvailableDirections(){
-        return String.join(", ", connections.keySet());
+    // Connect rooms
+    public void connect(String direction, Room room) {
+        connections.put(direction, room);
+    }
+
+    public Room getRoom(String direction) {
+        return connections.get(direction);
+    }
+
+    // Add an object or entity to a specific direction in the room
+    public void addObject(String direction, GameObject object) {
+        directionalObjects.put(direction, object);
+    }
+
+    public GameObject getObject(String direction) {
+        return directionalObjects.get(direction);
+    }
+
+    public void listContents() {
+        System.out.println("Contents in this room:");
+        for (String direction : directionalObjects.keySet()) {
+            GameObject object = directionalObjects.get(direction);
+            System.out.println("- To the " + direction + ": " + object.getName() + " (" + object.getDescription() + ")");
+        }
+    }
+
+    public void interactWithObject(String direction, Player player) {
+        GameObject object = directionalObjects.get(direction);
+        if (object != null) {
+            System.out.println("You interact with the " + object.getName() + " to the " + direction + ".");
+            object.interact(player);
+        } else {
+            System.out.println("There is nothing to interact with in that direction.");
+        }
     }
 }
