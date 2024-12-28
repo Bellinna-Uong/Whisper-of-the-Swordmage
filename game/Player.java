@@ -1,9 +1,9 @@
 package game;
 
 public class Player {
-    int health;
+    public int health;
     public int mana;
-    int strength;
+    public int strength;
 
     // Constructor with default values
     public Player() {
