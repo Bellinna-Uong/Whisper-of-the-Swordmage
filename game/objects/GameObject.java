@@ -1,4 +1,6 @@
-package game;
+package game.objects;
+
+import game.Player;
 
 public abstract class GameObject {
     private String name;
@@ -20,5 +22,5 @@ public abstract class GameObject {
     }
 
     // Abstract method to define unique behavior for each object
-    public abstract void interact();
+    public abstract void interact(Player player);
 }
