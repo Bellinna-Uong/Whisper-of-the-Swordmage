@@ -7,7 +7,11 @@ public class Room {
     private String description;
     private Map<String, Room> connections;
 
-    //Constructor
+    /**
+     * Constructor
+     * @param name
+     * @param description
+     */
     public Room(String name, String description) {
         this.name = name;
         this.description = description;

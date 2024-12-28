@@ -6,7 +6,12 @@ public abstract class GameObject {
     private String name;
     private String description;
 
-    // Constructor
+    /**
+     * Constructor
+     * @param name
+     * @param description
+     */
+
     public GameObject(String name, String description) {
         this.name = name;
         this.description = description;
@@ -21,6 +26,10 @@ public abstract class GameObject {
         return description;
     }
 
-    // Abstract method to define unique behavior for each object
+    /**
+     *
+     * @param player
+     * Abstract method to define unique behavior for each object
+     */
     public abstract void interact(Player player);
 }

@@ -5,7 +5,7 @@ public class Player {
     public int mana;
     public int strength;
 
-    // Constructor with default values
+    // Default values
     public Player() {
         this.health = 100;
         this.mana = 10;
