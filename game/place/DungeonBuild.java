@@ -86,7 +86,7 @@ public class DungeonBuild {
         six.connect("South", seven);
         seven.connectCorridor("North", corridor4);
         seven.connect("East", ten);
-        nine.connectCorridor("East", corridor4);
+        nine.connectCorridor("West", corridor4);
         ten.connect("South", eleven);
         ten.connect("West", seven);
         twelve.connect("South", thirteen);
@@ -106,7 +106,7 @@ public class DungeonBuild {
         five.addObject("West", orc);
         seven.addObject("South", orc);
         nine.addObject("North", sword);
-        nine.addObject("West", harpy);
+        nine.addObject("East", harpy);
         ten.addObject("North", sword);
         twelve.addObject("North", bed);
         twelve.addObject("East", sword);
