@@ -25,14 +25,7 @@ public class Enemy extends GameObject {
 
     @Override
     public void interact(Player player) {
-        System.out.println("The " + getName() + " attacks you and deals " + damage + " damage!");
-        player.setHealth(player.getHealth() - damage);
 
-        if (player.getHealth() <= 0) {
-            System.out.println("You have been defeated by the " + getName() + "!");
-        } else {
-            System.out.println("Your remaining health: " + player.getHealth());
-        }
     }
 
 
