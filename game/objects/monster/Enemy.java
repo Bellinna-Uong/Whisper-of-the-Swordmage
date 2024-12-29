@@ -15,6 +15,14 @@ public class Enemy extends GameObject {
         this.fly = false;
     }
 
+    public void setFly(boolean canFly) {
+        this.fly = canFly;
+    }
+
+    public boolean canFly() {
+        return fly;
+    }
+
     @Override
     public void interact(Player player) {
         System.out.println("The " + getName() + " attacks you and deals " + damage + " damage!");
@@ -26,5 +34,6 @@ public class Enemy extends GameObject {
             System.out.println("Your remaining health: " + player.getHealth());
         }
     }
+
 
 }

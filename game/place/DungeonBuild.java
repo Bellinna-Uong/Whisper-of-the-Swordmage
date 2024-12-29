@@ -2,6 +2,8 @@ package game.place;
 
 import game.objects.item.Bed;
 import game.objects.monster.Enemy;
+import game.objects.monster.Harpy;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +16,8 @@ public class DungeonBuild {
     }
 
     public Map<String, Room> createDungeon() {
+        Harpy harpie = new Harpy();
+
         // Create rooms
         Room start = new Room("Starting point","");
         //Room one = new Room("Room 1","");
@@ -88,7 +92,7 @@ public class DungeonBuild {
         secret.connect("West",eighteen);
 
         start.addObject("West", new Bed());
-        nine.addObject("West", new Enemy("Goblin", 30));
+        nine.addObject("West", harpie);
 
         return rooms;
     }
