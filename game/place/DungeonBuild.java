@@ -1,8 +1,11 @@
 package game.place;
 
 import game.objects.item.Bed;
-import game.objects.monster.Enemy;
+import game.objects.item.Crystal;
+import game.objects.item.Sword;
 import game.objects.monster.Harpy;
+import game.objects.monster.Orc;
+import game.objects.monster.Medusa;
 
 
 import java.util.HashMap;
@@ -16,7 +19,13 @@ public class DungeonBuild {
     }
 
     public Map<String, Room> createDungeon() {
-        Harpy harpie = new Harpy();
+        Harpy harpy = new Harpy();
+        Orc orc = new Orc();
+        Medusa medusa = new Medusa();
+        Sword sword = new Sword();
+        Crystal crystal = new Crystal();
+        Bed bed = new Bed();
+
 
         // Create rooms
         Room start = new Room("Starting point","");
@@ -91,8 +100,21 @@ public class DungeonBuild {
         twenty.connect("West",eighteen);
         secret.connect("West",eighteen);
 
-        start.addObject("West", new Bed());
-        nine.addObject("West", harpie);
+        start.addObject("West", bed);
+        three.addObject("East", sword);
+        three.addObject("South", crystal);
+        five.addObject("West", orc);
+        seven.addObject("South", orc);
+        nine.addObject("North", sword);
+        nine.addObject("West", harpy);
+        ten.addObject("North", sword);
+        twelve.addObject("North", bed);
+        twelve.addObject("East", sword);
+        thirteen.addObject("West", harpy);
+        eighteen.addObject("South", bed);
+        twenty.addObject("North", orc);
+        boss.addObject("West",medusa);
+
 
         return rooms;
     }
