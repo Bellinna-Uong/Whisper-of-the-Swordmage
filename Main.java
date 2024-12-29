@@ -26,8 +26,8 @@ public class Main {
         while (true) {
             // Description de la salle actuelle et son contenu
             System.out.println("\nYou are in the " + currentRoom.getName());
-            System.out.println(currentRoom.getDescription());
-            currentRoom.listContents();
+            //System.out.println(currentRoom.getDescription());
+            //currentRoom.listContents();
 
             // Demande de direction au joueur
             System.out.print("\nChoose a direction to explore (North, South, East, West, or 'quit' to exit): ");
