@@ -45,12 +45,13 @@ public class Main {
 
             if (object != null) {
                 System.out.println("\nYou found a " + object.getName() + " to the " + direction + ".");
-                System.out.print("Do you want to interact with it? (yes/no): ");
-                String interact = scanner.nextLine().trim();
-                if (interact.equalsIgnoreCase("yes")) {
-                    currentRoom.interactWithObject(direction, player);
-                    System.out.println("Updated stats: " + player);
-                }
+                currentRoom.interactWithObject(direction, player);
+                //System.out.print("Do you want to interact with it? (yes/no): ");
+                //String interact = scanner.nextLine().trim();
+                //if (interact.equalsIgnoreCase("yes")) {
+                    //currentRoom.interactWithObject(direction, player);
+                    //System.out.println("Updated stats: " + player);
+                //}
 
             } else if (nextRoom != null) {
                 System.out.println("\nYou open the door to the " + direction + " and enter " + nextRoom.getName() + ".");
