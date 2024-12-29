@@ -3,20 +3,20 @@ package game.objects.monster;
 import game.Player;
 import java.util.Random;
 
-public class Harpy extends Enemy {
-    private static final int MIN_DAMAGE = 10;
-    private static final int MAX_DAMAGE = 15;
-    public Harpy() {
-        super("Harpie",0,50);
-        this.setFly(true);
+public class Medusa extends Enemy {
+    private static final int MIN_DAMAGE = 15;
+    private static final int MAX_DAMAGE = 19;
+    public Medusa() {
+        super("Medusa",0,70);
+        this.setFly(false);
     }
 
     @Override
     public void interact(Player player) {
         Random random = new Random();
         int damage = random.nextInt(MAX_DAMAGE - MIN_DAMAGE + 1) + MIN_DAMAGE;
-    System.out.println("The " + getName() + " swoops down from the sky and attacks you, dealing " + damage + " damage!");
-    player.setHealth(player.getHealth() - damage);
+        System.out.println("The " + getName() + " stirs its mass and attacks you, dealing " + damage + " damage!");
+        player.setHealth(player.getHealth() - damage);
 
         if (player.getHealth() <= 0) {
             System.out.println("You have been defeated by the " + getName() + "!");

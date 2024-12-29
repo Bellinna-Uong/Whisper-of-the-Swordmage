@@ -7,7 +7,7 @@ public class Orc extends Enemy {
     private static final int MIN_DAMAGE = 13;
     private static final int MAX_DAMAGE = 19;
     public Orc() {
-        super("Orc",0);
+        super("Orc",0,40);
         this.setFly(false);
     }
 

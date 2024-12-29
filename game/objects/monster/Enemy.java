@@ -8,7 +8,7 @@ public class Enemy extends GameObject {
     private int health;
     private boolean fly;
 
-    public Enemy(String name, int damage) {
+    public Enemy(String name, int damage, int health) {
         super(name, "An enemy that attacks the player.");
         this.damage = damage;
         this.health = 50;
