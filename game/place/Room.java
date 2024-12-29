@@ -1,5 +1,6 @@
-package game;
+package game.place;
 
+import game.Player;
 import game.objects.GameObject;
 
 import java.util.HashMap;

@@ -1,6 +1,7 @@
-package game.objects;
+package game.objects.item;
 
 import game.Player;
+import game.objects.GameObject;
 
 public class Crystal extends GameObject {
 

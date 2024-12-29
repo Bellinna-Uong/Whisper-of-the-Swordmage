@@ -1,6 +1,7 @@
-package game;
+package game.place;
 
-import game.objects.Bed;
+import game.objects.item.Bed;
+import game.objects.monster.Enemy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -65,6 +66,7 @@ public class DungeonBuild {
         two.connectCorridor("East", corridor4);
         two.connect("South", three);
         two.connect("West", start);
+        three.connect("North", two);
         five.connect("East", twelve);
         five.connectCorridor("South", corridor4);
         six.connectCorridor("North", corridor4);
@@ -86,11 +88,10 @@ public class DungeonBuild {
         secret.connect("West",eighteen);
 
         start.addObject("West", new Bed());
-        nine.addObject("West", new game.Enemy("Goblin", 30));
+        nine.addObject("West", new Enemy("Goblin", 30));
 
         return rooms;
     }
-
 
 
 }

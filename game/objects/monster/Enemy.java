@@ -1,13 +1,18 @@
-package game;
+package game.objects.monster;
 
+import game.Player;
 import game.objects.GameObject;
 
 public class Enemy extends GameObject {
-    private int damage; // Points de dégâts infligés par l'ennemi
+    private int damage;
+    private int health;
+    private boolean fly;
 
     public Enemy(String name, int damage) {
         super(name, "An enemy that attacks the player.");
         this.damage = damage;
+        this.health = 50;
+        this.fly = false;
     }
 
     @Override
@@ -21,4 +26,5 @@ public class Enemy extends GameObject {
             System.out.println("Your remaining health: " + player.getHealth());
         }
     }
+
 }
