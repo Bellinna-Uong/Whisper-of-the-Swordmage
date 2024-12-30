@@ -1,3 +1,4 @@
+import game.objects.monster.Enemy;
 import game.place.Corridor;
 import game.place.DungeonBuild;
 import game.Player;
@@ -44,15 +45,21 @@ public class Main {
             Corridor corridor = currentRoom.getCorridor(direction);
 
             if (object != null) {
-                System.out.println("\nYou found a " + object.getName() + " to the " + direction + ".");
-                currentRoom.interactWithObject(direction, player);
-                //System.out.print("Do you want to interact with it? (yes/no): ");
-                //String interact = scanner.nextLine().trim();
-                //if (interact.equalsIgnoreCase("yes")) {
-                    //currentRoom.interactWithObject(direction, player);
-                    //System.out.println("Updated stats: " + player);
-                //}
-
+                if (object instanceof Enemy) {
+                    ((Enemy) object).combat(player);
+                    if (player.getHealth() <= 0) {
+                        System.out.println("Game Over!");
+                        break;
+                    }
+                } else {
+                    System.out.println("\nYou found a " + object.getName() + " to the " + direction + ".");
+                    System.out.print("Do you want to interact with it? (yes/no): ");
+                    String interact = scanner.nextLine().trim();
+                    if (interact.equalsIgnoreCase("yes")) {
+                        currentRoom.interactWithObject(direction, player);
+                        System.out.println("Updated stats: " + player);
+                    }
+                }
             } else if (nextRoom != null) {
                 System.out.println("\nYou open the door to the " + direction + " and enter " + nextRoom.getName() + ".");
                 currentRoom = nextRoom;

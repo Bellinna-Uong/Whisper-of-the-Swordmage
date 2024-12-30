@@ -5,7 +5,7 @@ import game.objects.GameObject;
 
 public class Enemy extends GameObject {
     private int damage;
-    private int health;
+    int health;
     private boolean fly;
 
     public Enemy(String name, int damage, int health) {
@@ -25,8 +25,9 @@ public class Enemy extends GameObject {
 
     @Override
     public void interact(Player player) {
-
     }
+
+    public void combat(Player player) {}
 
 
 }

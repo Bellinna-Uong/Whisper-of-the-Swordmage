@@ -31,5 +31,17 @@ public class Player {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public int swordAttack(){
+        System.out.println("You strike with your sword !");
+        return strength;
+    }
+
+    public int fireballAttack(){
+        System.out.println("You cast a fireball !");
+        return mana;
+    }
 }
+
+
 
