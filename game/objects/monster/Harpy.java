@@ -2,16 +2,18 @@ package game.objects.monster;
 
 import game.Player;
 
-import javax.xml.transform.Source;
-import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Harpy extends Enemy {
     private static final int MIN_DAMAGE = 10;
     private static final int MAX_DAMAGE = 15;
+
+    /**
+     * Constructor for Harpy
+     */
     public Harpy() {
-        super("Harpy",0,0);
+        super("Harpy", 0, 50);
         this.setFly(true);
     }
 
@@ -19,12 +21,14 @@ public class Harpy extends Enemy {
     public void combat(Player player) {
         System.out.println("You encounter a " + getName() + " that soars through the air!");
 
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
         while (this.health > 0 && player.getHealth() > 0) {
-            // Tour du joueur
+            // Player's turn
             System.out.println("\nChoose your action:");
             System.out.println("1. Sword Attack");
             System.out.println("2. Fireball Attack");
-            Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
 
             int damageToEnemy = 0;
@@ -35,20 +39,16 @@ public class Harpy extends Enemy {
                 this.health -= damageToEnemy;
                 System.out.println("You hit the " + getName() + " with a fireball, dealing " + damageToEnemy + " damage. Remaining health: " + this.health);
             } else {
-                System.out.println("Invalid choice ! You lose your turn.");
+                System.out.println("Invalid choice! You lose your turn.");
             }
 
-            this.health -= damageToEnemy;
-            System.out.println("You deal " + damageToEnemy + " damage to the " + getName() + ". \nRemaining health of your enemy : " + this.health);
-
-            // Check if enemy dead
+            // Check if the enemy is defeated
             if (this.health <= 0) {
                 System.out.println("You defeated the " + getName() + "!");
                 break;
             }
 
-            // Enemy turn
-            Random random = new Random();
+            // Enemy's turn
             int damage = random.nextInt(MAX_DAMAGE - MIN_DAMAGE + 1) + MIN_DAMAGE;
             System.out.println("The " + getName() + " swoops down from the sky and attacks you, dealing " + damage + " damage!");
             player.setHealth(player.getHealth() - damage);

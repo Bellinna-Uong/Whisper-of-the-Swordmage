@@ -1,14 +1,19 @@
 package game.objects.monster;
 
 import game.Player;
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class Medusa extends Enemy {
     private static final int MIN_DAMAGE = 15;
     private static final int MAX_DAMAGE = 19;
+
+    /**
+     * Constructor for Medusa
+     */
     public Medusa() {
-        super("Medusa",0,70);
+        super("Medusa", 0, 70);
         this.setFly(false);
     }
 
@@ -16,12 +21,14 @@ public class Medusa extends Enemy {
     public void combat(Player player) {
         System.out.println("You encounter a " + getName() + "!");
 
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
         while (this.health > 0 && player.getHealth() > 0) {
-            //Player
-            System.out.println("\nChoose your action :");
+            // Player's turn
+            System.out.println("\nChoose your action:");
             System.out.println("1. Sword Attack");
             System.out.println("2. Fireball Attack");
-            Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
 
             int damageToEnemy = 0;
@@ -30,26 +37,25 @@ public class Medusa extends Enemy {
             } else if (choice == 2) {
                 damageToEnemy = player.fireballAttack();
             } else {
-                System.out.println("Invalid choice ! You lose your turn.");
+                System.out.println("Invalid choice! You lose your turn.");
             }
 
             this.health -= damageToEnemy;
-            System.out.println("You deal " + damageToEnemy + " damage to the " + getName() + ". \nRemaining health : " + this.health);
+            System.out.println("You deal " + damageToEnemy + " damage to the " + getName() + ". Remaining health: " + this.health);
 
-            // Check if enemy dead
+            // Check if the enemy is defeated
             if (this.health <= 0) {
                 System.out.println("You defeated the " + getName() + "!");
                 break;
             }
 
-            // Enemy turn
-            Random random = new Random();
+            // Enemy's turn
             int damage = random.nextInt(MAX_DAMAGE - MIN_DAMAGE + 1) + MIN_DAMAGE;
-            System.out.println( getName() + " attacks you, dealing " + damage + " damage!");
+            System.out.println("The " + getName() + " attacks you, dealing " + damage + " damage!");
             player.setHealth(player.getHealth() - damage);
 
             if (player.getHealth() <= 0) {
-                System.out.println("You have been defeated by " + getName() + "!");
+                System.out.println("You have been defeated by the " + getName() + "!");
             } else {
                 System.out.println("Your remaining health: " + player.getHealth());
             }

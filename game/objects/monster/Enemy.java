@@ -4,20 +4,20 @@ import game.Player;
 import game.objects.GameObject;
 
 public class Enemy extends GameObject {
-    private int damage;
-    int health;
+    private final int damage;
+    protected int health;
     private boolean fly;
 
     /**
-     *
-     * @param name
-     * @param damage
-     * @param health
+     * Constructor for Enemy
+     * @param name The name of the enemy
+     * @param damage The damage the enemy deals
+     * @param health The enemy's health points
      */
     public Enemy(String name, int damage, int health) {
         super(name, "An enemy that attacks the player.");
         this.damage = damage;
-        this.health = 50;
+        this.health = health;
         this.fly = false;
     }
 
@@ -41,7 +41,6 @@ public class Enemy extends GameObject {
         }
     }
 
+    // Method to handle combat logic
     public void combat(Player player) {}
-
-
 }

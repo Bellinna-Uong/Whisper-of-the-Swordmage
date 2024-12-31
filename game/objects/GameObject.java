@@ -3,16 +3,15 @@ package game.objects;
 import game.Player;
 
 public abstract class GameObject {
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
     private boolean hasInteracted;
 
     /**
-     *
-     * @param name
-     * @param description
+     * Constructor for GameObject
+     * @param name The name of the object
+     * @param description The description of the object
      */
-
     public GameObject(String name, String description) {
         this.name = name;
         this.description = description;
@@ -36,10 +35,9 @@ public abstract class GameObject {
         this.hasInteracted = hasInteracted;
     }
 
-
     /**
-     *
-     * @param player
+     * Handles interaction logic with the player. Ensures interaction is one-time.
+     * @param player The player interacting with the object
      */
     public void interact(Player player) {
         if (hasInteracted) {
@@ -50,5 +48,6 @@ public abstract class GameObject {
         }
     }
 
+    // Abstract method to be implemented by subclasses for specific interactions
     protected abstract void performInteraction(Player player);
 }
