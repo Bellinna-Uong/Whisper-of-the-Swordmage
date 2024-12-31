@@ -11,7 +11,7 @@ public class Harpy extends Enemy {
     private static final int MIN_DAMAGE = 10;
     private static final int MAX_DAMAGE = 15;
     public Harpy() {
-        super("Harpy",0,50);
+        super("Harpy",0,0);
         this.setFly(true);
     }
 
@@ -39,7 +39,7 @@ public class Harpy extends Enemy {
             }
 
             this.health -= damageToEnemy;
-            System.out.println("You deal " + damageToEnemy + " damage to the " + getName() + ". \nRemaining health : " + this.health);
+            System.out.println("You deal " + damageToEnemy + " damage to the " + getName() + ". \nRemaining health of your enemy : " + this.health);
 
             // Check if enemy dead
             if (this.health <= 0) {

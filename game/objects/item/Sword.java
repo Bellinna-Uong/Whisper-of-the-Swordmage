@@ -10,7 +10,7 @@ public class Sword extends GameObject {
     }
 
     @Override
-    public void interact (Player player) {
+    public void performInteraction (Player player) {
         System.out.println("It combined with your sword.");
         player.strength += 5;
         System.out.println("Your strength increased by 5. Current strength: " + player.strength);
