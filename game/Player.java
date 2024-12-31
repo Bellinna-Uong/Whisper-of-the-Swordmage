@@ -12,6 +12,12 @@ public class Player {
         this.strength = 10;
     }
 
+    /**
+     *
+     * @param health
+     * @param mana
+     * @param strength
+     */
     // Constructor with custom values
     public Player(int health, int mana, int strength) {
         this.health = health;

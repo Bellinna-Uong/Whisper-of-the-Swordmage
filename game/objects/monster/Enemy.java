@@ -8,6 +8,12 @@ public class Enemy extends GameObject {
     int health;
     private boolean fly;
 
+    /**
+     *
+     * @param name
+     * @param damage
+     * @param health
+     */
     public Enemy(String name, int damage, int health) {
         super(name, "An enemy that attacks the player.");
         this.damage = damage;
