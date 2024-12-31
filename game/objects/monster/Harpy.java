@@ -11,17 +11,17 @@ public class Harpy extends Enemy {
     private static final int MIN_DAMAGE = 10;
     private static final int MAX_DAMAGE = 15;
     public Harpy() {
-        super("Harpie",0,50);
+        super("Harpy",0,50);
         this.setFly(true);
     }
 
     @Override
     public void combat(Player player) {
-        System.out.println("You encounter a " + getName() + "!");
+        System.out.println("You encounter a " + getName() + " that soars through the air!");
 
-        while(this.health > 0 && player.getHealth() > 0){
-            //Player
-            System.out.println("\nChoose your action :");
+        while (this.health > 0 && player.getHealth() > 0) {
+            // Tour du joueur
+            System.out.println("\nChoose your action:");
             System.out.println("1. Sword Attack");
             System.out.println("2. Fireball Attack");
             Scanner scanner = new Scanner(System.in);
@@ -29,9 +29,11 @@ public class Harpy extends Enemy {
 
             int damageToEnemy = 0;
             if (choice == 1) {
-                damageToEnemy = player.swordAttack();
+                System.out.println("The " + getName() + " dodges your sword attack! It's flying too high.");
             } else if (choice == 2) {
                 damageToEnemy = player.fireballAttack();
+                this.health -= damageToEnemy;
+                System.out.println("You hit the " + getName() + " with a fireball, dealing " + damageToEnemy + " damage. Remaining health: " + this.health);
             } else {
                 System.out.println("Invalid choice ! You lose your turn.");
             }
