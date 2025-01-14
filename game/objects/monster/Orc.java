@@ -12,6 +12,15 @@ public class Orc extends Enemy {
     }
 
     @Override
+    protected void performInteraction(Player player) {
+        if (isDefeated()) {
+            System.out.println("The " + getName() + " is already dead...");
+        } else {
+            super.performInteraction(player);
+        }
+    }
+
+    @Override
     protected void enemyAction(Player player) {
         Random random = new Random();
         int damage = random.nextInt(MAX_DAMAGE - MIN_DAMAGE + 1) + MIN_DAMAGE;

@@ -12,8 +12,17 @@ public class Harpy extends Enemy {
      * Constructor for Harpy
      */
     public Harpy() {
-        super("Harpy", 0, 50); // Damage is handled dynamically for Harpy
+        super("Harpy", 0, 50);
         this.setFly(true); // Harpy can fly
+    }
+
+    @Override
+    protected void performInteraction(Player player) {
+        if (isDefeated()) {
+            System.out.println("The " + getName() + " is already dead...");
+        } else {
+            super.performInteraction(player);
+        }
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Enemy extends GameObject {
     private final int damage; // Fixed damage for the enemy
     protected int health;     // Health points of the enemy
     private boolean fly;      // Indicates if the enemy can fly
+    boolean defeated; // Flag to track if the enemy is already defeated
 
     /**
      * Constructor for Enemy
@@ -21,6 +22,7 @@ public class Enemy extends GameObject {
         this.damage = damage;
         this.health = health;
         this.fly = false;
+        this.defeated = false; // Initially, the enemy is not defeated
     }
 
     // Getter and Setter for flying capability
@@ -32,10 +34,19 @@ public class Enemy extends GameObject {
         return fly;
     }
 
+    // Getter for defeated status
+    public boolean isDefeated() {
+        return defeated;
+    }
+
     @Override
     protected void performInteraction(Player player) {
-        System.out.println("The " + getName() + " notices you and prepares to attack!");
-        combat(player);
+        if (defeated) {
+            System.out.println("The " + getName() + " is already dead...");
+        } else {
+            System.out.println("The " + getName() + " notices you and prepares to attack!");
+            combat(player);
+        }
     }
 
     /**
@@ -58,6 +69,7 @@ public class Enemy extends GameObject {
             // Apply damage to the enemy
             this.health -= damageToEnemy;
             if (this.health <= 0) {
+                this.defeated = true;  // Mark the enemy as defeated
                 System.out.println("You have defeated the " + getName() + "!");
                 break;
             }
